@@ -1,15 +1,10 @@
-FROM node:18 
 
-COPY . /app
-RUN apt-get update && apt-get install -y sqlite3
-WORKDIR /app   
+# syntax=docker/dockerfile:1
 
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
 
-RUN npm install
-
-
-EXPOSE 5050
-
-CMD [ "npm", "start" ]
-
-
+RUN npm install && npm install sqlite3
+CMD ["npm", "start"]
+EXPOSE 5050 
