@@ -1,10 +1,8 @@
-
 # syntax=docker/dockerfile:1
 
-FROM node:18-alpine
+FROM node:lts-alpine
 WORKDIR /app
 COPY . .
-
-RUN npm install && npm install sqlite3
+RUN npm install 
 CMD ["npm", "start"]
 EXPOSE 5050 
